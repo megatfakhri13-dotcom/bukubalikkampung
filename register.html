@@ -1,0 +1,52 @@
+register.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Student</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Student Registration</h1>
+  </header>
+
+  <main>
+    <form id="registerForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="room">Room Number:</label>
+      <input type="text" id="room" name="room" required>
+
+      <label for="mykad">MyKad Number:</label>
+      <input type="text" id="mykad" name="mykad" placeholder="e.g. 010203-10-1234" required>
+
+      <label for="ndp">NDP Number:</label>
+      <input type="text" id="ndp" name="ndp" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // save details to localStorage (mock database)
+      const studentData = {
+        name: document.getElementById('name').value,
+        room: document.getElementById('room').value,
+        mykad: document.getElementById('mykad').value,
+        ndp: document.getElementById('ndp').value
+      };
+      
+      localStorage.setItem('studentData', JSON.stringify(studentData));
+      alert("Registration successful! You can now request to go home.");
+      window.location.href = "request.html"; // redirect
+    });
+  </script>
+</body>
+</html>

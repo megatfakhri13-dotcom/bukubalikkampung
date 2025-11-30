@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warden Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="navbar glass">
+    <a href="index.html" class="logo">🏫 JMTi Balik Kampung System</a>
+    <span>👮 Warden Dashboard</span>
+  </div>
+
+  <div class="hero">
+    <div class="card-glass">
+      <h1>Student Requests</h1>
+      <p>Review and approve/reject requests submitted by students.</p>
+
+      <!-- Summary card -->
+      <div class="card-glass" style="margin: 1rem 0; display: flex; justify-content: space-around; text-align:center;">
+        <div>
+          <h2 id="totalRequests">0</h2>
+          <p>Total Requests</p>
+        </div>
+        <div>
+          <h2 id="approvedCount">0</h2>
+          <p>Approved</p>
+        </div>
+        <div>
+          <h2 id="pendingCount">0</h2>
+          <p>Pending</p>
+        </div>
+        <div>
+          <h2 id="rejectedCount">0</h2>
+          <p>Rejected</p>
+        </div>
+      </div>
+
+      <!-- Requests table -->
+      <table class="glass-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Room</th>
+            <th>Destination</th>
+            <th>Reason</th>
+            <th>Emergency Contact</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="requestTable">
+          <!-- Example row -->
+          <tr>
+            <td>Ali Bin Ahmad</td>
+            <td>B302</td>
+            <td>Kuala Lumpur</td>
+            <td>Family Visit</td>
+            <td>Mother (012-3456789)</td>
+            <td class="status">Pending</td>
+            <td>
+              <button class="btn-glass approve"><i data-lucide="check"></i></button>
+              <button class="btn-glass reject"><i data-lucide="x"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Siti Aminah</td>
+            <td>A110</td>
+            <td>Penang</td>
+            <td>Medical Appointment</td>
+            <td>Father (019-8765432)</td>
+            <td class="status">Pending</td>
+            <td>
+              <button class="btn-glass approve"><i data-lucide="check"></i></button>
+              <button class="btn-glass reject"><i data-lucide="x"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const table = document.getElementById("requestTable");
+    const totalRequests = document.getElementById("totalRequests");
+    const approvedCount = document.getElementById("approvedCount");
+    const pendingCount = document.getElementById("pendingCount");
+    const rejectedCount = document.getElementById("rejectedCount");
+
+    // Count statuses
+    function updateCounts() {
+      const statuses = [...table.querySelectorAll(".status")].map(td => td.textContent);
+      totalRequests.textContent = statuses.length;
+      approvedCount.textContent = statuses.filter(s => s.includes("Approved")).length;
+      rejectedCount.textContent = statuses.filter(s => s.includes("Rejected")).length;
+      pendingCount.textContent = statuses.filter(s => s.includes("Pending")).length;
+    }
+
+    // Initial counts
+    updateCounts();
+
+    // Approve/reject actions
+    document.querySelectorAll(".approve").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const row = btn.closest("tr");
+        row.querySelector(".status").textContent = "✅ Approved";
+        updateCounts();
+      });
+    });
+
+    document.querySelectorAll(".reject").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const row = btn.closest("tr");
+        row.querySelector(".status").textContent = "❌ Rejected";
+        updateCounts();
+      });
+    });
+  </script>
+</body>
+</html>

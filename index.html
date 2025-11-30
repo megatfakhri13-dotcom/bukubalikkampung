@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JMTi Balik Kampung System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script> <!-- icons -->
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar glass">
+    <span class="logo">🏫 JMTi Balik Kampung System</span>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="card-glass">
+      <h1>Balik Kampung Made Easy 🏡</h1>
+      <p>Manage approvals, records, and student counts in one place.</p>
+      <div class="btn-group">
+        <a href="register.html" class="btn-glass"><i data-lucide="user-plus"></i> Register</a>
+        <button class="btn-glass" id="openLogin"><i data-lucide="log-in"></i> Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="actions">
+    <div class="card-glass">
+      <h2>Quick Actions</h2>
+      <div class="btn-group">
+        <a href="request.html" class="btn-glass"><i data-lucide="bus"></i> Request Balik Kampung</a>
+        <button class="btn-glass"><i data-lucide="users"></i> View Student List</button>
+        <button class="btn-glass"><i data-lucide="shield"></i> Warden Login</button>
+      </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="card-glass">
+      <h2>Student Resources</h2>
+      <div class="btn-group">
+        <a href="holiday-calendar.pdf" target="_blank" class="btn-glass"><i data-lucide="calendar"></i> Holiday Calendar</a>
+        <a href="https://www.ktmb.com.my/traintime.html" target="_blank" class="btn-glass"><i data-lucide="train"></i> KTMB Timetable</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-glass">
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="Student ID" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn-glass">Login</button>
+      </form>
+      <button class="close-btn" id="closeModal"><i data-lucide="x"></i></button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Modal JS
+    const modalOverlay = document.getElementById("modalOverlay");
+    const openLogin = document.getElementById("openLogin");
+    const closeModal = document.getElementById("closeModal");
+
+    openLogin.addEventListener("click", () => {
+      modalOverlay.style.display = "flex";
+    });
+
+    closeModal.addEventListener("click", () => {
+      modalOverlay.style.display = "none";
+    });
+
+    // Close modal if clicking outside
+    window.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

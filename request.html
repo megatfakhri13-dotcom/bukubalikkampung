@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Request Form</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="navbar glass">
+    <a href="index.html" class="logo">🏫 JMTi Balik Kampung System</a>
+  </div>
+
+  <div class="hero">
+    <div class="card-glass">
+      <h1>Student Request Form ✍️</h1>
+      <p>Submit your request to go home or for night out below.</p>
+
+      <form>
+        <!-- Autofilled student info -->
+        <input type="text" placeholder="Full Name" value="(Autofill)" readonly>
+        <input type="text" placeholder="Room Number" value="(Autofill)" readonly>
+        <input type="text" placeholder="MyKad Number" value="(Autofill)" readonly>
+        <input type="text" placeholder="Phone Number" value="(Autofill)" readonly>
+
+        <!-- Request details -->
+        <input type="text" placeholder="Destination" required>
+        <input type="text" placeholder="Reason" required>
+
+        <!-- Connection + emergency contact -->
+        <label>Connection</label>
+        <select required>
+          <option value="">-- Select Connection --</option>
+          <option value="mother">Mother</option>
+          <option value="father">Father</option>
+          <option value="guardian">Guardian</option>
+          <option value="friend">Friend</option>
+        </select>
+
+        <input type="text" placeholder="Emergency Contact Name" required>
+        <input type="tel" placeholder="Emergency Contact Phone" required>
+
+        <button type="submit" class="btn-glass"><i data-lucide="send"></i> Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
